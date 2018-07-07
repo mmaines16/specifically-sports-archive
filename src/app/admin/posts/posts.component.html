@@ -20,7 +20,7 @@
             <th scope="row">{{ p.id }}</th>
             <td>{{ p.title }}</td>
             <td>{{ p.author }}</td>
-            <td> <button class="btn btn-primary">Edit</button> </td>
+            <td> <a class="btn btn-primary" [routerLink]="['/admin/post', p.id]" >Edit</a> </td>
           </tr>
         </tbody>
       </table>

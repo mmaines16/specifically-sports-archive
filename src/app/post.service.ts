@@ -13,7 +13,14 @@ export class PostService {
     this.mockPosts$ = Observable.create(mockPosts);
   }
 
-  getMockPosts() {
+  getMockPosts(): MockPost[] {
     return mockPosts;
+  }
+
+  getMockPost(id): MockPost {
+    if(!mockPosts[id]) return null;
+
+    return mockPosts[id];
+
   }
 }

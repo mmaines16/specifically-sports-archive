@@ -12,6 +12,7 @@ const routes: Routes = [
   {path: 'posts/:id', component: PostComponent},
   {path: 'admin/posts', component: AdminPostsComponent},
   {path: 'admin/post', component: AdminPostComponent},
+  {path: 'admin/post/:id', component: AdminPostComponent}
 ];
 
 @NgModule({
