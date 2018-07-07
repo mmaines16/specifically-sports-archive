@@ -1,0 +1,16 @@
+.posts {
+    margin: 10px;
+    width: 60em;
+}
+
+.card-img-top {
+    overflow: hidden;
+}
+
+.card-footer {
+    font-size: .8em;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
