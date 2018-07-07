@@ -1,3 +1,6 @@
+import { QuillModule } from 'ngx-quill';
+import { AdminPostComponent } from './admin/post/post.component';
+import { AdminPostsComponent } from './admin/posts/posts.component';
 import { PostService } from './post.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,11 +17,14 @@ import { PostComponent } from './post/post.component';
     AppComponent,
     HomeComponent,
     PostsComponent,
-    PostComponent
+    PostComponent,
+    AdminPostsComponent,
+    AdminPostComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    QuillModule,
     NgbModule.forRoot(),
   ],
   providers: [PostService],

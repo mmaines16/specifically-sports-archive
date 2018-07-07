@@ -1,3 +1,11 @@
 <p>
   post works!
 </p>
+
+<ng-container *ngIf="post">
+  <h3>{{ post.title }}</h3>
+  <p>{{ post.author }}</p>
+</ng-container>
+
+<quill-editor #editor (onEditorCreated)="populateEditor()" [readOnly]="true" theme="bubble"></quill-editor>
+

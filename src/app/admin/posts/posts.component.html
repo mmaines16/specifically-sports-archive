@@ -1,0 +1,28 @@
+<p>
+    posts works!
+  </p>
+  
+  <div class="row">
+    <a class="btn btn-success" routerLink="/admin/post">New Post</a>
+    
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of posts">
+            <th scope="row">{{ p.id }}</th>
+            <td>{{ p.title }}</td>
+            <td>{{ p.author }}</td>
+            <td> <button class="btn btn-primary">Edit</button> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> <!-- row -->

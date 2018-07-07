@@ -21,7 +21,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ p.title }}</h5>
             <p class="card-text">{{p.description}}</p>
-            <a href="#" class="btn btn-primary">Read More</a>
+            <a [routerLink]="[p.id]" class="btn btn-primary">Read More</a>
           </div>
           <div class="card-footer">Author: {{ p.author }}</div>
       </li>
