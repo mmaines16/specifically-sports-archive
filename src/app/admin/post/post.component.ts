@@ -41,7 +41,6 @@ Quill.register(Font, true);
 export class AdminPostComponent implements OnInit {
 
   post: MockPost;
-  editor: QuillEditorComponent;
 
   constructor(private route: ActivatedRoute, private router: Router, postService$: PostService) { 
     this.route.params.subscribe(params => {
@@ -51,6 +50,18 @@ export class AdminPostComponent implements OnInit {
 
   populateEditor(editor) {
     if(this.post) editor.quillEditor.setContents(this.post.delta);
+  }
+
+  save(form) {
+    console.log('post saved...', form);
+
+    //implement saving here using post service / firebase
+  }
+
+  delete(form) {
+    console.log('post deleted...', form);
+
+    //implement deletion here using post service / firebase
   }
 
   ngOnInit() {}
