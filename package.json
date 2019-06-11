@@ -31,7 +31,7 @@
     "quill-image-resize-module": "^1.0.0",
     "quill-mention": "^2.0.0",
     "rxios": "^1.1.2",
-    "rxjs": "^6.2.2",
+    "rxjs": "6.0.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

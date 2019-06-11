@@ -1,6 +1,4 @@
-<p>
-  post works!
-</p>
+
 <div styles="display: none;" *ngIf="isNewPost; then newPost; else editPost"></div>
 <ng-template #newPost>
   <form #newF="ngForm">
@@ -55,12 +53,22 @@
       </div>
     </div>
     
-    <div class="form-group" styles="border: none;">
-      <label for="quillEditor">Post</label>
-      <quill-editor #newPostEditor name="newPostQuillEditor" (onEditorCreated)="populateEditor(newPostEditor)" class="form-control" [style]="{minHeight: '200px'}"></quill-editor>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group" styles="border: none;">
+          <label for="quillEditor">Post</label>
+          <quill-editor id="quillNewEditor" #newPostEditor name="newPostQuillEditor" (onEditorCreated)="populateEditor(newPostEditor)" class="form-control" [style]="{'height': '90%'}"></quill-editor>
+        </div>
+      </div>
     </div>
-      
-    <button class="btn btn-success" (click)="create(newF, newPostEditor)">Create</button>
+    
+    <div class="row">
+      <div class="col">
+        <div class="form-group" styles="border: none;">
+            <button class="btn btn-lg btn-success" (click)="create(newF, newPostEditor)">Create</button>
+        </div>
+      </div>
+    </div>
   </form>
 </ng-template>
 <ng-template #editPost>
@@ -111,13 +119,24 @@
           </div>
         </div>
         
-        <div class="form-group" styles="border: none;">
-          <label for="quillEditor">Post</label>
-          <quill-editor #editor name="quillEditor" (onEditorCreated)="populateEditor(editor)" class="form-control"  [style]="{minHeight: '200px'}"></quill-editor>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="quillEditor">Post</label>
+              <quill-editor #editor id="quillEditor" name="quillEditor" (onEditorCreated)="populateEditor(editor)" class="form-control" [style]="{'height': '90%'}"></quill-editor>
+            </div>
+          </div>
         </div>
-        <div class="btn-group btn-group-lg" role="group" aria-label="post actions">
-          <button class="btn btn-success" (click)="save(f, editor)" type="submit">Save</button>
-          <button class="btn btn-danger" (click)="delete(f, editor)" >Delete</button>
+
+        <div class="row">
+          <div class="col">
+            <div class="btn-group btn-group-lg" role="group" aria-label="post actions">
+              <button class="btn btn-lg btn-success" (click)="save(f, editor)" type="submit">Save</button>
+              <button class="btn btn-lg btn-danger" (click)="delete(f, editor)" >Delete</button>
+            </div>
+          </div>
         </div>
+        
+        
       </form>
 </ng-template>

@@ -1,5 +1,9 @@
 #quillEditor {
-    border: none;
+    height: 500px;
+}
+
+#quillNewEditor {
+    height: 500px;
 }
 
 * {
