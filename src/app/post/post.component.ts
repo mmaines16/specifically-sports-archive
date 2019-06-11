@@ -1,5 +1,5 @@
 import { MockPost } from './../mock-posts';
-import { PostService } from './../post.service';
+import { PostService, Post } from './../post.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { QuillEditorComponent } from 'ngx-quill';
 
@@ -32,23 +32,40 @@ Quill.register(Font, true);
 export class PostComponent implements OnInit {
 
   posts: MockPost[];
-  post: MockPost;
+  post: Post;
   @ViewChild('editor') editor: QuillEditorComponent;
 
   constructor(private postService$: PostService, private route: ActivatedRoute, private router: Router) { 
 
-    this.posts = postService$.getMockPosts();
+    //this.posts = postService$.getMockPosts();
 
     this.route.params.subscribe(params => {
-      if(! params.id || params.id >= this.posts.length ) router.navigateByUrl('/posts'); // redirect if no id in params or if id is invalid
+      if(! params.id ) router.navigateByUrl('/posts'); // redirect if no id in params or if id is invalid
 
-      this.post = postService$.getMockPosts()[params.id];
+      postService$.getPost(params.id).then(res=> {
+        var newPost = new Post();
+        newPost.title = res.data.title;
+        newPost.id = res.data._id;
+        newPost.description = res.data.description;
+        newPost.category = res.data.category;
+        newPost.author = res.data.author;
+        newPost.imageUrl = res.data.imageUrl;
+        newPost.likes = res.data.likes;
+        newPost.dateCreated = res.data.dateCreated;
+        newPost.delta = res.data.delta;
+
+        this.post = newPost;
+
+        console.log('editor: ', this.editor);
+
+        this.populateEditor();
+      });
   
     });
   }
 
   populateEditor() {
-    this.editor.quillEditor.setContents(this.post.delta);
+    if(this.post) this.editor.quillEditor.setContents(this.post.delta);
 
   }
 

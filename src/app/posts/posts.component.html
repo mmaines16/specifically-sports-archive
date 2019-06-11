@@ -17,7 +17,7 @@
   <div class="col-sm-9">
     <ul class="container">
       <li *ngFor="let p of posts" class="card posts">
-          <img class="card-img-top" src="https://i1.wp.com/www.nationalreview.com/wp-content/uploads/2018/07/world-cup-shootout.jpg?resize=987%2C576&ssl=1" alt="Card image cap">
+          <img class="card-img-top" [src]="p.imageUrl" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">{{ p.title }}</h5>
             <p class="card-text">{{p.description}}</p>

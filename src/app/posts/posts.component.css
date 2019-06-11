@@ -3,6 +3,10 @@
     width: 60em;
 }
 
+.card {
+    max-width: 98vw !important;
+}
+
 .card-img-top {
     overflow: hidden;
 }
