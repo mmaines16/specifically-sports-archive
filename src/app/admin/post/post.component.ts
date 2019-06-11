@@ -1,7 +1,12 @@
+import { PostService } from './../../post.service';
+import { MockPost } from './../../mock-posts';
 import { Component, OnInit } from '@angular/core';
 import { QuillEditorComponent } from 'ngx-quill';
 
 import Quill from 'quill';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgModel } from '@angular/forms';
+import { ViewChild } from '@angular/core';
 
 // add image resize module
 // import ImageResize from 'quill-image-resize-module';
@@ -35,8 +40,28 @@ Quill.register(Font, true);
 })
 export class AdminPostComponent implements OnInit {
 
+  post: MockPost;
 
-  constructor() { 
+  constructor(private route: ActivatedRoute, private router: Router, postService$: PostService) { 
+    this.route.params.subscribe(params => {
+      this.post = postService$.getMockPost([params.id]);
+    });
+  }
+
+  populateEditor(editor) {
+    if(this.post) editor.quillEditor.setContents(this.post.delta);
+  }
+
+  save(form) {
+    console.log('post saved...', form);
+
+    //implement saving here using post service / firebase
+  }
+
+  delete(form) {
+    console.log('post deleted...', form);
+
+    //implement deletion here using post service / firebase
   }
 
   ngOnInit() {}

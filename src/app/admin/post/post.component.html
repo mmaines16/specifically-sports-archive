@@ -1,42 +1,86 @@
 <p>
   post works!
 </p>
-
-<form>
-  <div class="row">
-    <div class="col">
-      <div class="form-group">
-        <label for="postTitle">Title</label>
-        <input type="text" class="form-control" id="postTitle" placeholder="title...">
+<div styles="display: none;" *ngIf="post; then editPost; else newPost"></div>
+<ng-template #newPost>
+  <form>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="postTitle">Title</label>
+          <input type="text" class="form-control" id="postTitle" placeholder="title...">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="postAuthor">Author</label>
+          <input type="text" class="form-control" id="postAUthor" placeholder="author...">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="postCategory">Category</label>
+          <select class="form-control" id="postCategory">
+            <option>Soccer</option>
+            <option>Basketball</option>
+            <option>Hockey</option>
+            <option>Baseball</option>
+            <option>Rugby</option>
+          </select>
+        </div>
       </div>
     </div>
-    <div class="col">
-      <div class="form-group">
-        <label for="postAuthor">Author</label>
-        <input type="text" class="form-control" id="postAUthor" placeholder="author...">
-      </div>
+    <div class="form-group">
+      <label for="postDescription">Description</label>
+      <textarea class="form-control" id="postTitle" placeholder="description..." rows= "2"></textarea>
     </div>
-    <div class="col">
-      <div class="form-group">
-        <label for="postCategory">Category</label>
-        <select class="form-control" id="postCategory">
-          <option>Soccer</option>
-          <option>Basketball</option>
-          <option>Hockey</option>
-          <option>Baseball</option>
-          <option>Rugby</option>
-        </select>
-      </div>
+    <div class="form-group" styles="border: none;">
+      <label for="quillEditor">Post</label>
+      <quill-editor class="form-control" id="quillEditor" [style]="{minHeight: '200px'}"></quill-editor>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="postDescription">Description</label>
-    <textarea class="form-control" id="postTitle" placeholder="description..." rows= "2"></textarea>
-  </div>
-  <div class="form-group" styles="border: none;">
-    <label for="quillEditor">Post</label>
-    <quill-editor class="form-control" id="quillEditor" [style]="{minHeight: '200px'}"></quill-editor>
-  </div>
-
-  <button class="btn btn-success">Save</button>
-</form>
+      
+    <button class="btn btn-success">Save</button>
+  </form>
+</ng-template>
+<ng-template #editPost>
+    <form #f>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="postTitle">Title</label>
+              <input type="text" name="title" class="form-control" id="postTitle" [value]="post.title">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="postAuthor">Author</label>
+              <input type="text" name="author" class="form-control" id="postAUthor" [value]="post.author">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="postCategory">Category</label>
+              <select class="form-control" name="postCategory" id="postCategory">
+                <option>Soccer</option>
+                <option>Basketball</option>
+                <option>Hockey</option>
+                <option>Baseball</option>
+                <option>Rugby</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="postDescription">Description</label>
+          <textarea class="form-control" name="description" id="postTitle" [value]="post.description" rows= "2"></textarea>
+        </div>
+        <div class="form-group" styles="border: none;">
+          <label for="quillEditor">Post</label>
+          <quill-editor #editor name="quillEditor" (onEditorCreated)="populateEditor(editor)" class="form-control" id="quillEditor" [style]="{minHeight: '200px'}"></quill-editor>
+        </div>
+        <div class="btn-group btn-group-lg" role="group" aria-label="post actions">
+          <button class="btn btn-success" (onclick)="save(f)">Save</button>
+          <button class="btn btn-danger" (onclick)="delete(f)" >Delete</button>
+        </div>
+      </form>
+</ng-template>
