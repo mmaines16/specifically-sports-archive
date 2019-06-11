@@ -1,10 +1,4 @@
-<p>
-    posts works!
-  </p>
-  
   <div class="row">
-    <a class="btn btn-success" routerLink="/admin/post">New Post</a>
-    
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -20,9 +14,16 @@
             <th scope="row">{{ p.id }}</th>
             <td>{{ p.title }}</td>
             <td>{{ p.author }}</td>
-            <td> <a class="btn btn-primary" [routerLink]="['/admin/post', p.id]" >Edit</a> </td>
+            <td> 
+              <a class="btn btn-primary" [routerLink]="['/admin/post', p.id]" >Edit</a> 
+              <a class="btn btn-danger" style="color: white" (click)="deletePost(p)" >Delete</a>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div> <!-- row -->
+
+  <div class="row">
+      <a class="btn btn-lg btn-success" routerLink="/admin/post">New Post</a>
+  </div>
