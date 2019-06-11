@@ -11,6 +11,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostComponent } from './post/post.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { PostComponent } from './post/post.component';
     BrowserModule,
     AppRoutingModule,
     QuillModule,
+    HttpClientModule,
+    FormsModule,
     NgbModule.forRoot(),
   ],
   providers: [PostService],
