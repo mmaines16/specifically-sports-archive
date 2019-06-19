@@ -1,0 +1,10 @@
+.postDetailTopImg {
+    width: 85vw;
+    max-height: 50vh;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }

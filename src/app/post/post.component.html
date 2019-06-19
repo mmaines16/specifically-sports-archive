@@ -1,8 +1,11 @@
-<p>
-  post works!
-</p>
-
 <ng-container *ngIf="post">
+
+  <ng-container *ngIf="post.imageUrl">
+    <img class="postDetailTopImg center" [src]="post.imageUrl" alt="Card image cap">
+  </ng-container>
+
+  <br/>
+  
   <h3>{{ post.title }}</h3>
   <p>{{ post.author }}</p>
 </ng-container>
